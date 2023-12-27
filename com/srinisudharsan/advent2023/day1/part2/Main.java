@@ -1,22 +1,31 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Main {
     public static void main(String[] args) throws IOException{
         BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
-        long sum = 0;
-        String line;
+        AtomicLong sum = new AtomicLong(0);
         try {
-            line = reader.readLine();
-            while(line != null){
-                System.out.println("Line: " + line);
-                int val = NumberCalculator.CalculateNumber(line);
-                sum += val;
-                System.out.println("Val: " + val);
-                System.out.println("Sum: " + sum);
-                line = reader.readLine();
+            String line;
+            ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+            while ((line = reader.readLine()) != null) {
+                final String inputLine = line;
+                executor.submit(()->{
+                    System.out.println("Line: " + inputLine);
+                    int val = NumberCalculator.CalculateNumber(inputLine);
+                    sum.addAndGet(val);
+                    System.out.println("Val: " + val);
+                    System.out.println("Sum: " + sum);
+                });
             }
+            executor.shutdown();
+            executor.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS);
             System.out.println("Result: " + sum);
         }catch (Exception e) {
             e.printStackTrace();
