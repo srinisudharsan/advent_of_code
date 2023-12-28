@@ -15,11 +15,12 @@ public class Main {
         try {
             String line;
             ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+            GameRule gameRule = new GameRule(12, 13, 14);
             while ((line = reader.readLine()) != null) {
                 final String inputLine = line;
                 executor.submit(()->{
                     System.out.println("Line: " + inputLine);
-                    int sumVal = MinCubeProductCalculator.computeMinCubeProduct(inputLine);
+                    int sumVal = ValidGameFinder.gameNoIfValidGame(inputLine, gameRule);
                     sum.addAndGet(sumVal);
                     System.out.println("Val: " + sumVal);
                     System.out.println("Sum: " + sum);

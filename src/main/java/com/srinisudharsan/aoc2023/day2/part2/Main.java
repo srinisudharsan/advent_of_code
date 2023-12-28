@@ -1,4 +1,4 @@
-package com.srinisudharsan.aoc2023.day2.part1;
+package com.srinisudharsan.aoc2023.day2.part2;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,12 +15,11 @@ public class Main {
         try {
             String line;
             ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-            GameRule gameRule = new GameRule(12, 13, 14);
             while ((line = reader.readLine()) != null) {
                 final String inputLine = line;
                 executor.submit(()->{
                     System.out.println("Line: " + inputLine);
-                    int sumVal = MinCubeProductCalculator.computeMinCubeProduct(inputLine, gameRule);
+                    int sumVal = MinCubeProductCalculator.computeMinCubeProduct(inputLine);
                     sum.addAndGet(sumVal);
                     System.out.println("Val: " + sumVal);
                     System.out.println("Sum: " + sum);
