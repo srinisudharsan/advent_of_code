@@ -1,4 +1,4 @@
-package com.srinisudharsan.aoc2023.day2.part1;
+package com.srinisudharsan.aoc2023.day2.part2;
 
 public class MinCubeProductCalculator{
     public static int computeMinCubeProduct(String game){
