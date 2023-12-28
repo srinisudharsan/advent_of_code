@@ -10,10 +10,9 @@ Input for each part is in day/part/input.txt.
 
 # How to run
 1. Install latest java
-2. Open the repo source from vscode using "code .".
-3. Run any Main.java file. The vscode launch.json is already checked in.
-
-The conventional javac and java works fine too.
+2. Go to src/main/java
+3. Run `javac -d . com/adventofcode/day<daynum>/part<num>/Main.java`
+4. Run `java com.adventofcode.day<daynum>.part<num>.Main`
 
 # Notes on each problem:
 

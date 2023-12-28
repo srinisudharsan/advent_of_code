@@ -1,2 +1,4 @@
 # Compiled class file
 *.class
+# Exclude VS Code folder
+.vscode/
