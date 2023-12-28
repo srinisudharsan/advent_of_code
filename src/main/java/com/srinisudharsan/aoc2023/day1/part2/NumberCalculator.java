@@ -1,5 +1,10 @@
+package com.srinisudharsan.aoc2023.day1.part2;
+
 import java.util.HashMap;
 import java.util.Map;
+
+import com.srinisudharsan.aoc2023.AhoCorasick.AhoCorasick;
+import com.srinisudharsan.aoc2023.AhoCorasick.AhoCorasickOutput;
 
 public class NumberCalculator {
     private static String[] substrings = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};

@@ -1,3 +1,5 @@
+package com.srinisudharsan.aoc2023.AhoCorasick;
+
 public class AhoCorasickOutput {
     private String firstString;
     private int firstStringIndex;

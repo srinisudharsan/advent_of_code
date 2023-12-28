@@ -1,7 +1,7 @@
-import java.util.ArrayList;
+package com.srinisudharsan.aoc2023.AhoCorasick;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
+
 
 public class AhoCorasick{
     private static final int ALPHABET_SIZE = 26;
@@ -9,22 +9,19 @@ public class AhoCorasick{
         TrieNode[] children = new TrieNode[ALPHABET_SIZE];
         TrieNode failureLink = null;
         int firstOutput;
-        char c;
-        int numChild = 0;
 
-        public TrieNode(char c){
+        public TrieNode(){
             for(int i = 0; i < ALPHABET_SIZE; i++){
                 this.children[i] = null;
             }
             this.firstOutput = -1;
-            this.c = c;
         }
     }
     private TrieNode root;
     private String[] substrings;
     public AhoCorasick(String[] strings){
         this.substrings = strings;
-        this.root = new TrieNode('*');
+        this.root = new TrieNode();
         buildTrie(strings);
         buildFailureLinks();
         calculateNumChildren();
@@ -90,7 +87,7 @@ public class AhoCorasick{
             for (char c : keywords[i].toCharArray()) {
                 int index = c - 'a';
                 if (node.children[index] == null) {
-                    node.children[index] = new TrieNode(c);
+                    node.children[index] = new TrieNode();
                 }
                 node = node.children[index];
             }
@@ -148,15 +145,12 @@ public class AhoCorasick{
         queue.add(this.root);
         while(!queue.isEmpty()){
             TrieNode current = queue.remove();
-            int numChild = 0;
             for (int i = 0; i < ALPHABET_SIZE; i++) {
                 TrieNode child = current.children[i];
                 if (child != null){
-                    numChild++;
                     queue.add(child);
                 }
             }
-            current.numChild = numChild;
         }
     }
 

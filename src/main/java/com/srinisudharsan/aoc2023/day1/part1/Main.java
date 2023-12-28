@@ -1,3 +1,4 @@
+package com.srinisudharsan.aoc2023.day1.part1;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
