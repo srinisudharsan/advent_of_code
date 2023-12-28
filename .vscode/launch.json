@@ -6,8 +6,9 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Current File",
+            "name": "Java - Current File",
             "request": "launch",
+            "preLaunchTask": "Compile Java",
             "mainClass": "${file}",
             "cwd": "${fileDirname}"
         }

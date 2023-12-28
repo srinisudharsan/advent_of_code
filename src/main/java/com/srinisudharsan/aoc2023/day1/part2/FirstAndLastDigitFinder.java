@@ -6,7 +6,7 @@ import java.util.Map;
 import com.srinisudharsan.aoc2023.AhoCorasick.AhoCorasick;
 import com.srinisudharsan.aoc2023.AhoCorasick.AhoCorasickOutput;
 
-public class NumberCalculator {
+public class FirstAndLastDigitFinder {
     private static String[] substrings = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
     private static AhoCorasick ahoCorasick = new AhoCorasick(substrings);
     private static Map<String, Integer> substringToNumber = new HashMap<>();
@@ -15,8 +15,8 @@ public class NumberCalculator {
             substringToNumber.put(substrings[i], i);
         }
     }
-    public static int CalculateNumber(String mainString){
-        AhoCorasickOutput output = NumberCalculator.ahoCorasick.findFirstAndLastSubstrings(mainString);
+    public static int FindDigit(String mainString){
+        AhoCorasickOutput output = FirstAndLastDigitFinder.ahoCorasick.findFirstAndLastSubstrings(mainString);
         char[] chars = mainString.toCharArray();
         int firstDigit = -1;
         int lastDigit = -1;

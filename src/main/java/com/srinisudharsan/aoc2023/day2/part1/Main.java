@@ -1,3 +1,5 @@
+package com.srinisudharsan.aoc2023.day2.part1;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -17,10 +19,8 @@ public class Main {
                 final String inputLine = line;
                 executor.submit(()->{
                     System.out.println("Line: " + inputLine);
-                    int val = FirstAndLastDigitFinder.FindDigit(inputLine);
-                    sum.addAndGet(val);
-                    System.out.println("Val: " + val);
-                    System.out.println("Sum: " + sum);
+                    int gameNo = Integer.parseInt(inputLine.substring(5, inputLine.indexOf(':')-1));
+                    System.out.println("GameNo: "+gameNo);
                 });
             }
             executor.shutdown();
