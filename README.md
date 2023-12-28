@@ -8,6 +8,13 @@ Each day has its own folder. Typically there are two parts in each day. Each par
 The question for each day is in day/question.txt.
 Input for each part is in day/part/input.txt.
 
+# How to run
+1. Install latest java
+2. Open the repo source from vscode using "code .".
+3. Run any Main.java file. The vscode launch.json is already checked in.
+
+The conventional javac and java works fine too.
+
 # Notes on each problem:
 
 ## Day1
