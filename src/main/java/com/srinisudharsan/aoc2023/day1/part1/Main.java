@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException{
-        BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("resources/input1.txt"));
         long sum = 0;
         String line;
         try {

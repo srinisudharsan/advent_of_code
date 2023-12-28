@@ -8,7 +8,6 @@
             "type": "java",
             "name": "Java - Current File",
             "request": "launch",
-            "preLaunchTask": "Compile Java",
             "mainClass": "${file}",
             "cwd": "${fileDirname}"
         }

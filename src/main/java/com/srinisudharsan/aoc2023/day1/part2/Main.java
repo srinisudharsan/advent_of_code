@@ -1,3 +1,5 @@
+package com.srinisudharsan.aoc2023.day1.part2;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,7 +10,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class Main {
     public static void main(String[] args) throws IOException{
-        BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("resources/input2.txt"));
         AtomicLong sum = new AtomicLong(0);
         try {
             String line;

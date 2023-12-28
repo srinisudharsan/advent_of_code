@@ -10,17 +10,20 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class Main {
     public static void main(String[] args) throws IOException{
-        BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("resources/input2.txt"));
         AtomicLong sum = new AtomicLong(0);
         try {
             String line;
             ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+            GameRule gameRule = new GameRule(12, 13, 14);
             while ((line = reader.readLine()) != null) {
                 final String inputLine = line;
                 executor.submit(()->{
                     System.out.println("Line: " + inputLine);
-                    int gameNo = Integer.parseInt(inputLine.substring(5, inputLine.indexOf(':')-1));
-                    System.out.println("GameNo: "+gameNo);
+                    int sumVal = ValidGameFinder.gameNoIfValidGame(inputLine, gameRule);
+                    sum.addAndGet(sumVal);
+                    System.out.println("Val: " + sumVal);
+                    System.out.println("Sum: " + sum);
                 });
             }
             executor.shutdown();
