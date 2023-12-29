@@ -36,3 +36,5 @@ This got interesting. We use the same executor to submit two sets of tasks. We d
 ## Day4
 ### Part1
 Although there is no connection what so ever, we have a version of scatter gather abstracted out. A nice side effect of advent of code!
+### Part2
+We use a queue to work through the backlog

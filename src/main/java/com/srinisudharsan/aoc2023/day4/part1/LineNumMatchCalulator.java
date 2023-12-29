@@ -1,14 +1,21 @@
 package com.srinisudharsan.aoc2023.day4.part1;
 
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class LineWinPointCalulator{
+public class LineNumMatchCalulator{
+    private Map<Integer, Integer> lineNoToNumMatch = new ConcurrentHashMap<Integer, Integer>();
+    private Queue<Integer> copyBacklogLineNo = new ConcurrentLinkedQueue<Integer>();
 
-    public static int calculateWinPoints(String line){
+    public int calculateNumMatch(String line){
         if(line == null || line.length() == 0){
             return 0;
         }
+        int lineNo = Integer.parseInt(line.substring(5, line.indexOf(':')).trim());
         line = line.substring(line.indexOf(':')+1);
         if(line == null || line.length() == 0){
             return 0;
@@ -40,6 +47,22 @@ public class LineWinPointCalulator{
                 numMatch++;
             }
         }
-        return numMatch == 0 ? 0 : (int)Math.pow(2, numMatch-1);
+        lineNoToNumMatch.put(lineNo, numMatch);
+        return numMatch;
+    }
+
+    // There should be only one 
+    public synchronized int computeTotalCardCount(){
+        int retVal = this.lineNoToNumMatch.size();
+        copyBacklogLineNo.addAll(this.lineNoToNumMatch.keySet());
+        while(!copyBacklogLineNo.isEmpty()){
+            int lineNo = copyBacklogLineNo.poll();
+            int matches = lineNoToNumMatch.get(lineNo);
+            retVal += matches;
+            for(int i = 0; i< matches;i++){
+                this.copyBacklogLineNo.add(lineNo+i+1);
+            }
+        }
+        return retVal;
     }
 }
