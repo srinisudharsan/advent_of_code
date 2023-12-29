@@ -30,8 +30,13 @@ public class Main {
                 final char[] inputNextLine = nextLine;
                 final char[] inputPrevLine = prevLine;
                 executor.submit(()->{
-                    long sumVal = ValidNumberFinder.findValidNumber(inputPrevLine, inputLine, inputNextLine);
-                    sum.addAndGet(sumVal);
+                    try{
+                        long sumVal = ValidNumberFinder.findValidNumber(inputPrevLine, inputLine, inputNextLine);
+                        sum.addAndGet(sumVal);
+                    }
+                    catch(Exception e){
+                        e.printStackTrace();
+                    }
                 });
                 prevLine = line;
                 line = nextLine;

@@ -10,6 +10,7 @@ public class ValidNumberFinder{
             for(;idx < line.length && !Character.isDigit(line[idx]);idx++);
             numStartIdx = idx;
             addNumToSum = false;
+            currentNum = 0;
             for(;idx < line.length && Character.isDigit(line[idx]);idx++)
             {
                 currentNum = currentNum * 10 + line[idx] - '0';
@@ -37,22 +38,19 @@ public class ValidNumberFinder{
                     addNumToSum = addNumToSum || (nextLine != null && nextLine.length > 0 && !Character.isDigit(nextLine[idxToCheck]) && nextLine[idxToCheck] != '.');
                 }
                 if(!addNumToSum){
-                    int idxToCheck = idx + 1;
+                    int idxToCheck = idx;
                     // Check right, top right and bottom right
                     addNumToSum = (idxToCheck < line.length && line[idxToCheck] != '.') ;
                     addNumToSum = addNumToSum || (prevLine != null && idxToCheck < prevLine.length && !Character.isDigit(prevLine[idxToCheck]) && prevLine[idxToCheck] != '.');
                     addNumToSum = addNumToSum || (nextLine != null && idxToCheck < nextLine.length && !Character.isDigit(nextLine[idxToCheck]) && nextLine[idxToCheck] != '.');
                 }
             }
-            System.out.println(
-                "PrevLine: " + prevLine != null ? String.valueOf(prevLine) : "Null" +
-                ", Line: " + line  != null ? String.valueOf(line) : "Null" +
-                ", NextLine: " + nextLine != null ? String.valueOf(nextLine) : " Null" +
-                ", Num: " + currentNum + ", Add: " + addNumToSum);
+
             if(addNumToSum){
                 retVal += currentNum;
             }
         }
+        //System.out.println("Line: " + String.valueOf(line) + ", PrevLine:" + String.valueOf(prevLine) + ", NextLine:" + String.valueOf(nextLine) + ", Num: " + retVal);
         return retVal;
     }
 }
