@@ -6,15 +6,21 @@ import java.util.List;
 import java.util.Map;
 
 public class LineMetadataProvider {
-    private Map<LineIdx, Integer> lineIdxToNum = new HashMap<LineIdx, Integer>();
+    private Map<LineIdx, NumDetails> lineIdxToNum = new HashMap<LineIdx, NumDetails>();
     private Map<Integer, List<Integer>> starIxForLine = new HashMap<Integer, List<Integer>>();
 
     public List<Integer> getStarIdx(int lineNo){
         return this.starIxForLine.get(lineNo);
     }
 
-    // given a line no and idx gives a num if the num is running through this idx. Not just start or end
-    public Integer getNumForLineIdx(int lineNo, int idx){
+    public void printLineIdxToNum(){
+        for(LineIdx lineIdx : lineIdxToNum.keySet()){
+            System.out.println("Line No: " + lineIdx.lineNum + " Idx: " + lineIdx.idx + " Num: " + lineIdxToNum.get(lineIdx));
+        }   
+    }
+    // given a line no and idx gives a num along with its start and end idx if the num is running through this idx.
+    // Not just start or end
+    public NumDetails getNumDetailsForLineIdx(int lineNo, int idx){
         return lineIdxToNum.get(new LineIdx(lineNo, idx));
     }
 
@@ -30,12 +36,19 @@ public class LineMetadataProvider {
                 {
                     currentNum = currentNum * 10 + line[idx] - '0';
                 }
+                NumDetails numDetails = new NumDetails(currentNum, numStartIdx, idx - 1);
                 for(int i = numStartIdx; i < idx; i++){
-                    this.lineIdxToNum.put(new LineIdx(lineNo, i), currentNum);
+                    synchronized(this){
+                        this.lineIdxToNum.put(new LineIdx(lineNo, i), numDetails);
+                    }
                 }
+                // We have to go back one step as the for loop will increment idx
+                idx--;
             }
         }
-        this.starIxForLine.put(lineNo, starIdx);
+        synchronized(this){
+            this.starIxForLine.put(lineNo, starIdx);
+        }
     }
 
     private class LineIdx{
@@ -44,6 +57,15 @@ public class LineMetadataProvider {
         public LineIdx(int lineNum, int idx){
             this.lineNum = lineNum;
             this.idx = idx;
+        }
+
+        @Override
+        public int hashCode(){
+            final int prime = 31;
+            int result = 1;
+            result = prime * result + lineNum;
+            result = prime * result + idx;
+            return result;
         }
 
         @Override

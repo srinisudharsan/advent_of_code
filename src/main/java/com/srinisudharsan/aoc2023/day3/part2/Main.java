@@ -43,28 +43,42 @@ public class Main {
                 completionService.take();
             }
 
-            System.out.println("Pre Compute Completed");
+            //print staridx for each line
             for(int i = 0; i< lineNo;i++){
-                System.out.println("Line No" + lineNo);
-                List<Integer> starIdx = numIdxCalc.getStarIdx(lineNo);
-                if(starIdx != null){
-                    for(int idx : starIdx){
-                        System.out.println("Star Idx: " + idx);
-                    }
+                List<Integer> starIdx = numIdxCalc.getStarIdx(i);
+                if(starIdx != null && starIdx.size() > 0){
+                    System.out.println("Line No: " + i + " Star Idx: " + starIdx.toString());
                 }else{
-                    System.out.println("No Star Idx");
+                    System.out.println("Line No: " + i + " Star Idx: " + "[]");
                 }
             }
+            //numIdxCalc.printLineIdxToNum();
 
             AtomicLong result = new AtomicLong(0);
+            long[] retVals = new long[lineNo];
             for(int i = 0; i< lineNo; i++){
                 final int lineIdx = i;
-                executor.submit(() ->
+                completionService.submit(() ->
                 {
-                    result.addAndGet(GearRatioCalculator.calcGearRatio(lineIdx, numIdxCalc));
+                    try{
+                        long retVal = GearRatioCalculator.calcGearRatio(lineIdx, numIdxCalc);
+                        retVals[lineIdx] = retVal;
+                        result.addAndGet(retVal);
+                        return 0;
+                    }catch(Exception e){
+                        e.printStackTrace();
+                        return -1;
+                    }
                 });
             }
             
+            for(int i = 0; i< lineNo;i++){
+                completionService.take();
+            }
+
+            for(int i = 0; i< lineNo;i++){
+                System.out.println("Line No: " + i + " Gear Ratio: " + retVals[i]);
+            }
             executor.shutdown();
             executor.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS);
             System.out.println("Result: " + result);

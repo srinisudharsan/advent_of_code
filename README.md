@@ -26,3 +26,9 @@ Basic approach is to use a List with all strings, look for each string in the ma
 
 ## Day2
 Simple string parsing, nothing fancy.
+
+## Day3
+### Part1
+Simple parsing and executor logic
+### Part2
+This got interesting. We use the same executor to submit two sets of tasks. We do some precompute, wait for all precompute to be complete and then do the actual calculation. Notice how we had to do synchronized(this) to not lose values on HashMap. **I know that this is not required for such a simple problem, but I wanted to try out this approach to learn Executor, CompletionService etc since these are somewhat to async await in C#.**
