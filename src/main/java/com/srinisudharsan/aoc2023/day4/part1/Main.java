@@ -1,24 +1,15 @@
-package com.srinisudharsan.aoc2023.day3.part2;
+package com.srinisudharsan.aoc2023.day4.part1;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
-import java.util.concurrent.CompletionService;
-import java.util.concurrent.ExecutorCompletionService;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-
 import com.srinisudharsan.scatterGather.ExecutorScatterGatherBuilder;
 import com.srinisudharsan.scatterGather.ScatterGather;
 
 public class Main {
     public static void main(String[] args) throws IOException{
-        BufferedReader reader = new BufferedReader(new FileReader("resources/input3.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("resources/input4.txt"));
         String lineStr;
-        int lineNo = 0;
         try {
             // We try to submit two sets of jobs, one to preprocess each line and another to actually 
             // do the calculations

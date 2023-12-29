@@ -49,7 +49,7 @@ class ExecutorScatterGather<I, O, G> implements ScatterGather<I, O, G> {
         }
 
         List<O> results = new ArrayList<>();
-        for (Future<O> future : futures) {
+        for (Future<O> future : this.futures) {
             results.add(completionService.take().get());
         }
 

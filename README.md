@@ -31,4 +31,8 @@ Simple string parsing, nothing fancy.
 ### Part1
 Simple parsing and executor logic
 ### Part2
-This got interesting. We use the same executor to submit two sets of tasks. We do some precompute, wait for all precompute to be complete and then do the actual calculation. Notice how we had to do synchronized(this) to not lose values on HashMap. **I know that this is not required for such a simple problem, but I wanted to try out this approach to learn Executor, CompletionService etc since these are somewhat to async await in C#.**. 
+This got interesting. We use the same executor to submit two sets of tasks. We do some precompute, wait for all precompute to be complete and then do the actual calculation. Notice how we had to do synchronized(this) to not lose values on HashMap. **I know that this is not required for such a simple problem, but I wanted to try out this approach to learn Executor, CompletionService etc since these are somewhat to async await in C#.**.
+
+## Day4
+### Part1
+Although there is no connection what so ever, we have a version of scatter gather abstracted out. A nice side effect of advent of code!
