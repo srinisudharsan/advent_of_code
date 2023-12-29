@@ -13,7 +13,7 @@ Advent of code posts questions here: https://adventofcode.com/.
 4. Run `java com.adventofcode.day<daynum>.part<num>.Main`
 
 # Approach 
-No reason to choose a particular programming language for a question unless stated otherwise. I have used several approaches like using a ThreadPool Executor for reading each line of code and some complicated algorithms which are not strictly required or might not even be the most optimal given the size of input files. I still made these decisions to take these as a learning opportunity. To try out such experiments, I did not bother to abstract common code. I also did not care much about class design, rather focused on programming language constructs and algorithms.
+No reason to choose a particular programming language for a question unless stated otherwise. I have used several approaches like using a ThreadPool Executor(**Scatter Gather**) for reading each line of code and some complicated algorithms which are not strictly required or might not even be the most optimal given the size of input files. I still made these decisions to take these as a learning opportunity. To try out such experiments, I did not bother to abstract common code. I also did not care much about class design, rather focused on programming language constructs and algorithms.
 
 # Notes on each problem:
 
@@ -31,4 +31,4 @@ Simple string parsing, nothing fancy.
 ### Part1
 Simple parsing and executor logic
 ### Part2
-This got interesting. We use the same executor to submit two sets of tasks. We do some precompute, wait for all precompute to be complete and then do the actual calculation. Notice how we had to do synchronized(this) to not lose values on HashMap. **I know that this is not required for such a simple problem, but I wanted to try out this approach to learn Executor, CompletionService etc since these are somewhat to async await in C#.**
+This got interesting. We use the same executor to submit two sets of tasks. We do some precompute, wait for all precompute to be complete and then do the actual calculation. Notice how we had to do synchronized(this) to not lose values on HashMap. **I know that this is not required for such a simple problem, but I wanted to try out this approach to learn Executor, CompletionService etc since these are somewhat to async await in C#.**. 
