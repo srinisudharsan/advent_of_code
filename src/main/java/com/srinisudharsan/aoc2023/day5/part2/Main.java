@@ -59,7 +59,6 @@ public class Main {
         }
         Almanac almanac = new Almanac(seeds, seedToSoilMapping, soilToFertilzerMap, fertilizerToWaterMap,
         waterToLightMap, lightToTemperaturemap, temperatureToHumidityMap, humidityToLocationMap);
-        almanac.printAlmanac();
         ExecutorScatterGatherBuilder<Seed, Long, Long> sgBuilder= new ExecutorScatterGatherBuilder<Seed, Long, Long>(
             (seed)->{
                 // make this a stream and do parallel processing
@@ -67,7 +66,6 @@ public class Main {
                 .parallel() // Enables parallel processing
                 .mapToObj(seedNum -> {
                     long location = almanac.seedToLocation(seedNum); // Converts each seed number to a location
-                    System.out.println("Seed: " + seedNum + " Location: " + location); // Prints the seed and its location
                     return location;
                 })
                 .min(Long::compare) // Finds the minimum location
