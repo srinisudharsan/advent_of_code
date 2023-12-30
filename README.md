@@ -45,3 +45,6 @@ Let's move away from scatter gather a bit. Tried using .stream() and other aggre
 Used binary Search for searching for a range. Binary search was not necessary, but I wanted to try it out.
 ### Part2
 **Our scatter gather was pretty useful here**. It is like a billion operations. Even after all the parallel processing, the code was running for ever. The fix - **Remove the System.out.println**. The parallel processes were in contention for the simple resource, the stdout.
+
+## Day6
+More stream and aggregation functions. Nothing fancy. Binary search was handy.
