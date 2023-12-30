@@ -57,3 +57,7 @@ Again stream, map, reduce. Class Design helped with this.
 Simple stream, map, reduce
 ### Part2
 Very cool LCM!
+
+## Day9
+Stack was helpful
+
