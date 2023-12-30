@@ -1,4 +1,4 @@
-package com.srinisudharsan.aoc2023.day8.part1;
+package com.srinisudharsan.aoc2023.day8.part2;
 
 public class TreeNode {
     private String data;

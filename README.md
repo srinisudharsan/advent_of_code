@@ -51,3 +51,9 @@ More stream and aggregation functions. Nothing fancy. Binary search was handy.
 
 ## Day7
 Again stream, map, reduce. Class Design helped with this.
+
+## Day8
+### Part1
+Simple stream, map, reduce
+### Part2
+Very cool LCM!
