@@ -1,4 +1,4 @@
-package com.srinisudharsan.aoc2023.day5;
+package com.srinisudharsan.aoc2023.day5.part1;
 
 public class Mapping {
     private long destination;

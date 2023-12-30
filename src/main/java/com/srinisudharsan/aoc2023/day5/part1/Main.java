@@ -17,7 +17,7 @@ public class Main {
         while((line = reader.readLine()) != null){
             int idx;
             if((idx = line.indexOf("seeds:")) != -1){
-                seeds = line.substring(idx+1).trim();
+                seeds = line.substring(idx+6).trim();
             }
             else{
                 switch(line){
@@ -54,6 +54,7 @@ public class Main {
         }
         Almanac almanac = new Almanac(seeds, seedToSoilMapping, soilToFertilzerMap, fertilizerToWaterMap,
         waterToLightMap, lightToTemperaturemap, temperatureToHumidityMap, humidityToLocationMap);
+        almanac.printAlmanac();
         almanac.getSeeds().stream().map((seed) -> {
             long location = almanac.seedToLocation(seed);
             System.out.println("Seed: " + seed + " Location: " + location);

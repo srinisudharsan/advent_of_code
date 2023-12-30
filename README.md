@@ -38,3 +38,8 @@ This got interesting. We use the same executor to submit two sets of tasks. We d
 Although there is no connection what so ever, we have a version of scatter gather abstracted out. A nice side effect of advent of code!
 ### Part2
 We use a queue to work through the backlog
+
+## Day5
+### Part1
+Let's move away from scatter gather a bit. Tried using .stream() and other aggregation functions.
+Used binary Search for searching for a range. Binary search was not necessary, but I wanted to try it out.

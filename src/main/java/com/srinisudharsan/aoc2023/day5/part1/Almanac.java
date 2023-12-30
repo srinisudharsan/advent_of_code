@@ -1,13 +1,10 @@
-package com.srinisudharsan.aoc2023.day5;
+package com.srinisudharsan.aoc2023.day5.part1;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class Almanac {
     Comparator<Mapping> mappingComparator = new Comparator<Mapping>() {
@@ -61,12 +58,12 @@ public class Almanac {
         if(!this.seeds.contains(seed)){
             return -1;
         }
-        long location = seed;
-        for (int i = 0; i < this.mappings.size(); i++) {
-            List<Mapping> mappings = this.mappings.get(i);
-            location = getMapping(seed, mappings);
+        long lookup = seed;
+        for (List<Mapping> mapping: this.mappings) {
+            long input = lookup;
+            lookup = getMapping(lookup, mapping);
         }
-        return location;
+        return lookup;
     }
 
     public void printAlmanac(){
@@ -98,7 +95,7 @@ public class Almanac {
         if(m == null){
             return val;
         }
-        return m.getDestination();
+        return m.getDestination()+val-m.getSource();
     }
 
     private Mapping findMappingForSourceRange(long val, List<Mapping> mappings, int start, int end){
