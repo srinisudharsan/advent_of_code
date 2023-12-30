@@ -1,4 +1,4 @@
-package com.srinisudharsan.aoc2023.day6;
+package com.srinisudharsan.aoc2023.day6.part1;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

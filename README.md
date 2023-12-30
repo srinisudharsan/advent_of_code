@@ -48,3 +48,6 @@ Used binary Search for searching for a range. Binary search was not necessary, b
 
 ## Day6
 More stream and aggregation functions. Nothing fancy. Binary search was handy.
+
+## Day7
+Again stream, map, reduce. Class Design helped with this.
